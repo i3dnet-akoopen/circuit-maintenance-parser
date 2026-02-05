@@ -1131,24 +1131,23 @@ files = [
 
 [[package]]
 name = "netconan"
-version = "0.12.3"
+version = "0.15.0"
 description = "Netconan network configuration anonymization utilities"
 optional = false
-python-versions = "*"
+python-versions = ">=3.10"
 files = [
-    {file = "netconan-0.12.3-py2.py3-none-any.whl", hash = "sha256:1f7ecf67723633b665630efe5922b189ec2d39ab68709fa6955bfb9dc186aa7b"},
-    {file = "netconan-0.12.3.tar.gz", hash = "sha256:7518cea1e8b7e7c0828e710184c629f2bc78f16726bc80212e549a3b8814d369"},
+    {file = "netconan-0.15.0-py2.py3-none-any.whl", hash = "sha256:4b3992f5e358a19be88af79a8136c1961eb97dfb0c2b6b4df3ddb3f8658d2861"},
+    {file = "netconan-0.15.0.tar.gz", hash = "sha256:15a8a48552ad99152d74a22ee97f60fe7d9915ee42f7f6336826d9ff2a3271d0"},
 ]
 
 [package.dependencies]
 bidict = "<1.0.0"
-configargparse = "<1.0.0"
+configargparse = "<2.0.0"
 passlib = "<2.0.0"
-six = "<2.0.0"
 
 [package.extras]
-dev = ["flake8 (<4.0.0)", "flake8-docstrings (<2.0.0)", "pydocstyle (<4.0.0)"]
-test = ["pytest (>=4.6.0,<5.0.0)", "pytest-cov (<3.0.0)", "requests-mock (<2.0.0)", "testfixtures (<7.0.0)", "zipp (<2.2)"]
+dev = ["flake8 (<8.0.0)", "flake8-docstrings (<2.0.0)", "pydocstyle (<6.0.0)"]
+test = ["pytest (>=7)", "pytest-cov (<6.0.0)", "requests_mock (<2.0.0)", "testfixtures (<7.0.0)"]
 
 [[package]]
 name = "numpy"
@@ -1901,31 +1900,7 @@ h3 = ">4"
 numpy = {version = ">=1.23,<3", markers = "python_version >= \"3.9\""}
 
 [package.extras]
-numba = ["numba (>=0.56,<1) ; python_version < \"3.12\"", "numba (>=0.59,<1) ; python_version >= \"3.12\""]
-pytz = ["pytz (>=2022.7.1)"]
-
-[[package]]
-name = "timezonefinder"
-version = "8.2.1"
-description = "python package for finding the timezone of any point on earth (coordinates) offline"
-optional = false
-python-versions = "<4,>=3.11"
-groups = ["main"]
-markers = "python_version >= \"3.11\""
-files = [
-    {file = "timezonefinder-8.2.1-cp39-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e0dcaa33de1a5dad33db1dd36bead831c19d1865f1dc8c2e14361734293e7727"},
-    {file = "timezonefinder-8.2.1-cp39-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:8d46d82c6a821086a36bf2f8c57c1501dd2cf82f54ea647aca3901d33564ccf5"},
-    {file = "timezonefinder-8.2.1.tar.gz", hash = "sha256:16a8418fc73651b5491af891cf23973b967525ab6f4c8111c27c90fc6e22112d"},
-]
-
-[package.dependencies]
-cffi = ">=1.15.1,<3"
-flatbuffers = ">=25.2.10"
-h3 = ">=4"
-numpy = ">=2"
-
-[package.extras]
-numba = ["numba (>=0.56,<1)"]
+numba = ["numba (>=0.56,<1)", "numba (>=0.59,<1)"]
 pytz = ["pytz (>=2022.7.1)"]
 
 [[package]]
@@ -2168,4 +2143,4 @@ xlsx = ["openpyxl", "pandas"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "3fc308973ee093cba55bdeb3b195333782e795d5bea79f0db9f8bed08a90146d"
+content-hash = "8862a5efb23d852beab51d936b6ef2aca1b5c17e6fff7ed1cc043752cef58e2c"
