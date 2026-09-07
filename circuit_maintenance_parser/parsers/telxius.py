@@ -51,17 +51,21 @@ class HtmlParserTelxius1(Html):
 
     def parse_list_dates(self, items: ResultSet, events: List):
         """Parse list elements to start and end datetime(s)."""
+        start = None
         for item in items:
             text = item.get_text(strip=True)
             # Remove optional notes like "(Backup Window)"
             text = text.split("(")[0].strip()
-            if "Start Time" in text:
-                start_str = text.split(": ")
-                start = self.dt2ts(parser.parse(start_str[1]))
-            elif "EndTime" in text and start:
-                end_str = text.split(": ")
-                end = self.dt2ts(parser.parse(end_str[1]))
-                events.append({"start": start, "end": end})
+            # Cancellation notices split the window into separate "Start Time:"/"EndTime:" bullets
+            label, _, value = text.partition(":")
+            label = label.replace(" ", "").lower()
+            if label == "starttime":
+                start = self.dt2ts(parser.parse(value.strip()))
+            elif label == "endtime":
+                if start is None:
+                    raise ValueError(f"Found an end time with no preceding start time: {text}")
+                events.append({"start": start, "end": self.dt2ts(parser.parse(value.strip()))})
+                start = None
             else:
                 start_str, end_str = text.split(" - ")
                 events.append({"start": self.dt2ts(parser.parse(start_str)), "end": self.dt2ts(parser.parse(end_str))})
